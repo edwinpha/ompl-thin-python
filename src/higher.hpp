@@ -391,7 +391,7 @@ struct UnconstrianedCollisionAwareSpaceInformation : public CollisionAwareSpaceI
       throw std::runtime_error("box dimension and space dimension mismatch");
     }
     si_->setMotionValidator(std::make_shared<BoxMotionValidator>(si_, box_width));
-    si_->setup();
+    //si_->setup();
   }
 };
 

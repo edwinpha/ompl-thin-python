@@ -18,6 +18,7 @@ class Algorithm(Enum):
     RRTConnect = "RRTConnect"
     RRT = "RRT"
     RRTstar = "RRTstar"
+    InformedRRTstar = "InformedRRTstar"
 
 
 class ConstStateType(Enum):

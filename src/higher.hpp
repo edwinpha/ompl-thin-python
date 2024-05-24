@@ -463,12 +463,12 @@ struct PlannerBase {
       return {};
     }
     if (result == ob::PlannerStatus::APPROXIMATE_SOLUTION) {
-      OMPL_INFORM("reporeted to be solved. But reject it because it'S approx solution");
+      OMPL_INFORM("reported to be solved. But reject it because it's approx. solution");
       return {};
     }
     if (simplify) {
       if constexpr (Constrained) {
-        std::runtime_error("simplify does not seem to work well in constrinaed case");
+        std::runtime_error("simplify does not seem to work well in constrained case");
       }
       setup_->simplifySolution(fn);
     }

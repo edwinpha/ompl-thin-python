@@ -11,7 +11,7 @@ def is_valid(x) -> bool:
 start = np.array([0.1, 0.1])
 goal = np.array([0.9, 0.9])
 
-skips = ["AITstar", "LazyPRMstar"]
+skips = ["AITstar", "LazyPRMstar", "KPIECE1", "BKPIECE1", "LBKPIECE1"]
 set_ompl_random_seed(1)
 
 for algo in Algorithm:

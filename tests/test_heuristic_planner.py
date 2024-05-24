@@ -5,7 +5,7 @@ from common import IsValid, ProblemDef, Trajectory
 
 from ompl import ERTConnectPlanner, Planner, RepairPlanner, set_ompl_random_seed
 
-set_ompl_random_seed(0)
+set_ompl_random_seed(1)
 
 
 def _test_heuristic_planner(heuristic_planner_t, visualize: bool = False):

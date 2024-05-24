@@ -6,7 +6,7 @@ import numpy as np
 
 from ompl import Algorithm, LightningDB, LightningPlanner, Planner, set_ompl_random_seed
 
-set_ompl_random_seed(0)
+set_ompl_random_seed(1)
 np.random.seed(5)
 
 

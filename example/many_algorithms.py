@@ -12,7 +12,7 @@ start = np.array([0.1, 0.1])
 goal = np.array([0.9, 0.9])
 
 skips = ["AITstar", "LazyPRMstar"]
-set_ompl_random_seed(0)
+set_ompl_random_seed(1)
 
 for algo in Algorithm:
     print(algo)

@@ -6,7 +6,7 @@ from mpl_toolkits.mplot3d import Axes3D, axes3d  # noqa
 
 from ompl import ConstrainedPlanner, set_ompl_random_seed
 
-set_ompl_random_seed(0)
+set_ompl_random_seed(1)
 np.random.seed(0)
 
 

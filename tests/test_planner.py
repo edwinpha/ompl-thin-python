@@ -5,7 +5,7 @@ from common import IsValid, ProblemDef, Trajectory
 
 from ompl import InvalidProblemError, Planner, set_ompl_random_seed
 
-set_ompl_random_seed(0)
+set_ompl_random_seed(1)
 
 
 def test_planner(visualize: bool = False):

@@ -525,6 +525,7 @@ struct PlannerBase {
       return create_algorithm<og::RRTstar>(space_info, range);
     } else if (name.compare("InformedRRTstar") == 0) {
       return create_algorithm<og::InformedRRTstar>(space_info, range);
+    }
     throw std::runtime_error("algorithm " + name + " is not supported");
   }
 

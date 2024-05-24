@@ -376,8 +376,8 @@ struct CollisionAwareSpaceInformation {
   std::vector<double> box_width_;
 };
 
-struct UnconstrianedCollisoinAwareSpaceInformation : public CollisionAwareSpaceInformation<false> {
-  UnconstrianedCollisoinAwareSpaceInformation(
+struct UnconstrianedCollisionAwareSpaceInformation : public CollisionAwareSpaceInformation<false> {
+  UnconstrianedCollisionAwareSpaceInformation(
       const std::vector<double>& lb,
       const std::vector<double>& ub,
       const std::function<bool(std::vector<double>)>& is_valid,
@@ -397,8 +397,8 @@ struct UnconstrianedCollisoinAwareSpaceInformation : public CollisionAwareSpaceI
 
 enum ConstStateType { PROJECTION, ATLAS, TANGENT };
 
-struct ConstrainedCollisoinAwareSpaceInformation : public CollisionAwareSpaceInformation<true> {
-  ConstrainedCollisoinAwareSpaceInformation(
+struct ConstrainedCollisionAwareSpaceInformation : public CollisionAwareSpaceInformation<true> {
+  ConstrainedCollisionAwareSpaceInformation(
       const ConstFn& f_const,
       const ConstJacFn& jac_const,
       const std::vector<double>& lb,
@@ -528,8 +528,8 @@ struct PlannerBase {
   }
 
   typedef typename std::conditional<Constrained,
-                                    ConstrainedCollisoinAwareSpaceInformation,
-                                    UnconstrianedCollisoinAwareSpaceInformation>::type CsiType;
+                                    ConstrainedCollisionAwareSpaceInformation,
+                                    UnconstrianedCollisionAwareSpaceInformation>::type CsiType;
   std::unique_ptr<CsiType> csi_;
   std::unique_ptr<og::SimpleSetup> setup_;
 };
@@ -547,7 +547,7 @@ struct ConstrainedPlanner : public PlannerBase<true> {
                      ConstStateType cs_type = ConstStateType::PROJECTION)
       : PlannerBase<true>{nullptr, nullptr}
   {
-    csi_ = std::make_unique<ConstrainedCollisoinAwareSpaceInformation>(
+    csi_ = std::make_unique<ConstrainedCollisionAwareSpaceInformation>(
         f_const, jac_const, lb, ub, is_valid, max_is_valid_call, box_width, cs_type);
     const auto algo = get_algorithm(algo_name, range);
 
@@ -565,7 +565,7 @@ struct UnconstrainedPlannerBase : public PlannerBase<false> {
                            const std::vector<double>& box_width)
       : PlannerBase<false>{nullptr, nullptr}
   {
-    csi_ = std::make_unique<UnconstrianedCollisoinAwareSpaceInformation>(
+    csi_ = std::make_unique<UnconstrianedCollisionAwareSpaceInformation>(
         lb, ub, is_valid, max_is_valid_call, box_width);
     setup_ = std::make_unique<og::SimpleSetup>(csi_->si_);
     setup_->setStateValidityChecker([this](const ob::State* s) { return this->csi_->is_valid(s); });
